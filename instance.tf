@@ -1,6 +1,6 @@
 resource "aws_instance" "amazonLinux" {
                                        ami           = "ami-0fc61db8544a617ed"
-                                       instance_type = "t2.micro"
+                                       instance_type = "t2.t2.xlarge"
 
                                        # the VPC subnet
                                        subnet_id = aws_subnet.MySubnet-public.id
