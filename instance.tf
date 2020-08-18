@@ -1,4 +1,4 @@
-resource "aws_instance" "amazonLinux" {
+resource "aws_instance" "MyInstance" {
                                        ami           = "ami-0fc61db8544a617ed"
                                        instance_type = "t2.xlarge"
 
@@ -14,7 +14,7 @@ resource "aws_instance" "amazonLinux" {
                                        # the role 
                                        iam_instance_profile= "${aws_iam_instance_profile.s3-mybucket-role.name}"
   
-                                       tags= { Name= "amazonLinux"}
+                                       tags= { Name= "MyInstance"}
                                       }
 
   #user_data
