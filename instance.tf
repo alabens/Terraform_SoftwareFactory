@@ -1,19 +1,21 @@
 resource "aws_instance" "amazonLinux" {
-  ami           = "ami-0fc61db8544a617ed"
-  instance_type = "t2.micro"
- 
+                                       ami           = "ami-0fc61db8544a617ed"
+                                       instance_type = "t2.micro"
 
-  # the VPC subnet
-  subnet_id = aws_subnet.MySubnet-public.id
+                                       # the VPC subnet
+                                       subnet_id = aws_subnet.MySubnet-public.id
 
-  # the security group
-  vpc_security_group_ids = [aws_security_group.MySecurityGroup.id]
+                                       # the security group
+                                       vpc_security_group_ids = [aws_security_group.MySecurityGroup.id]
 
-  # the public SSH key
-  key_name = "aws"
+                                       # the public SSH key
+                                       key_name = "aws"
   
-  # the role 
-  iam_instance_profile= "${aws_iam_instance_profile.s3-mybucket-role.name}"
+                                       # the role 
+                                       iam_instance_profile= "${aws_iam_instance_profile.s3-mybucket-role.name}"
+  
+                                       tags= { Name= "amazonLinux"}
+                                      }
 
   #user_data
   user_data= <<-EOF
@@ -33,9 +35,7 @@ chkconfig httpd on
 service httpd start
 EOF
 
-  tags= {
-      Name= "amazonLinux"
-}
+
 }
 resource "aws_ebs_volume" "ebs-volume-1" {
   availability_zone = "us-east-1a"
