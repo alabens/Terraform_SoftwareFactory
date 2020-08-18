@@ -1,6 +1,6 @@
-resource "aws_instance" "MyInstance" {
+resource "aws_instance" "amazonLinux" {
                                        ami           = "ami-0fc61db8544a617ed"
-                                       instance_type = "t2.xlarge"
+                                       instance_type = "t2.micro"
 
                                        # the VPC subnet
                                        subnet_id = aws_subnet.MySubnet-public.id
@@ -14,8 +14,8 @@ resource "aws_instance" "MyInstance" {
                                        # the role 
                                        iam_instance_profile= "${aws_iam_instance_profile.s3-mybucket-role.name}"
   
-                                       tags= { Name= "MyInstance"}
-                                      }
+                                       tags= { Name= "amazonLinux"}
+                                      
 
   #user_data
   user_data= <<-EOF
@@ -34,7 +34,6 @@ unzip aws -d /var/www/html
 chkconfig httpd on
 service httpd start
 EOF
-
 
 }
 resource "aws_ebs_volume" "ebs-volume-1" {
